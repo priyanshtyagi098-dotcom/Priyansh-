@@ -3,290 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Priyansh Tyagi | Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-    scroll-behavior:smooth;
-}
-
-body{
-    background:black;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* Matrix Background */
-
-canvas{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    z-index:-1;
-}
-
-/* Navbar */
-
-nav{
-    width:100%;
-    padding:20px 10%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:fixed;
-    top:0;
-    z-index:1000;
-    backdrop-filter:blur(10px);
-    background:rgba(0,0,0,0.3);
-}
-
-.logo{
-    font-size:28px;
-    font-weight:700;
-    color:#00ff88;
-    text-shadow:0 0 15px #00ff88;
-}
-
-nav ul{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-nav ul li a:hover{
-    color:#00ff88;
-}
-
-/* Hero */
-
-.hero{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-}
-
-.hero h1{
-    font-size:80px;
-    color:#00ff88;
-    text-shadow:0 0 30px #00ff88;
-}
-
-.hero h2{
-    margin-top:10px;
-    color:#d4d4d4;
-    font-size:30px;
-}
-
-.hero p{
-    margin-top:20px;
-    color:#bdbdbd;
-    max-width:700px;
-    font-size:18px;
-    line-height:1.8;
-}
-
-/* Typing */
-
-.typing{
-    color:#00ff88;
-    border-right:3px solid #00ff88;
-    white-space:nowrap;
-    overflow:hidden;
-    width:0;
-    animation:typing 4s steps(30,end) forwards,
-              blink 0.7s infinite;
-}
-
-@keyframes typing{
-    from{width:0}
-    to{width:100%}
-}
-
-@keyframes blink{
-    50%{border-color:transparent}
-}
-
-/* Buttons */
-
-.buttons{
-    margin-top:40px;
-}
-
-.btn{
-    display:inline-block;
-    padding:14px 35px;
-    margin:10px;
-    border-radius:12px;
-    text-decoration:none;
-    transition:0.3s;
-    font-weight:600;
-}
-
-.primary{
-    background:#00ff88;
-    color:black;
-}
-
-.primary:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 25px #00ff88;
-}
-
-.secondary{
-    border:2px solid #00ff88;
-    color:#00ff88;
-}
-
-.secondary:hover{
-    background:#00ff88;
-    color:black;
-}
-
-/* Sections */
-
-.section{
-    padding:120px 10%;
-}
-
-.title{
-    text-align:center;
-    font-size:45px;
-    margin-bottom:60px;
-    color:#00ff88;
-    text-shadow:0 0 15px #00ff88;
-}
-
-/* Cards */
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(0,255,136,0.2);
-    padding:30px;
-    border-radius:20px;
-    transition:0.3s;
-    backdrop-filter:blur(10px);
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 25px rgba(0,255,136,0.3);
-}
-
-.card h3{
-    color:#00ff88;
-    margin-bottom:15px;
-}
-
-/* About */
-
-.about{
-    text-align:center;
-    max-width:900px;
-    margin:auto;
-    color:#d1d1d1;
-    line-height:2;
-    font-size:18px;
-}
-
-/* Footer */
-
-footer{
-    text-align:center;
-    padding:40px;
-    color:#8d8d8d;
-}
-
-/* Mobile */
-
-@media(max-width:768px){
-
-.hero h1{
-    font-size:50px;
-}
-
-.hero h2{
-    font-size:22px;
-}
-
-nav{
-    flex-direction:column;
-    gap:15px;
-}
-
-nav ul{
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-}
-
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<canvas id="matrix"></canvas>
+<div id="loader">
 
-<nav>
+<div class="loader-circle"></div>
 
-<div class="logo">Priyansh</div>
+<h2>Loading Portfolio...</h2>
+
+</div>
+
+<div id="particles"></div>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<span>P</span>riyansh
+
+</div>
 
 <ul>
-<li><a href="#">Home</a></li>
+
+<li><a href="#home">Home</a></li>
+
 <li><a href="#about">About</a></li>
+
 <li><a href="#skills">Skills</a></li>
+
 <li><a href="#projects">Projects</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
 </ul>
 
 </nav>
 
-<section class="hero">
+</header>
 
-<div>
+<section id="home" class="hero">
 
-<h1>Priyansh Tyagi</h1>
+<div class="glass hero-card">
 
-<h2 class="typing">
-Developer • Creator • Freelancer
+<h3>Hello 👋</h3>
+
+<h1>
+
+Priyansh Tyagi
+
+</h1>
+
+<h2 id="typing">
+
 </h2>
 
 <p>
-18 year old passionate developer learning coding,
-building creative projects and exploring the digital world.
-Focused on modern websites, Discord setups and online freelancing.
+
+Passionate web developer, creator and freelancer.
+
+Building modern websites with beautiful UI and smooth animations.
+
 </p>
 
-<div class="buttons">
+<div class="hero-buttons">
 
-<a href="https://github.com" class="btn primary">
+<a href="#projects" class="btn">
+
+View Projects
+
+</a>
+
+<a href="#contact" class="btn outline">
+
+Contact Me
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="about">
+
+<div class="glass about-card">
+
+<h2>
+
+About Me
+
+</h2>
+
+<p>
+
+Hi, I'm <b>Priyansh Tyagi</b>.
+
+I'm passionate about creating modern websites, learning new technologies and improving my programming skills every day.
+
+My goal is to become a professional Full Stack Developer and build high-quality digital products.
+
+</p>
+
+<div class="stats">
+
+<div>
+
+<h1>18</h1>
+
+<p>Age</p>
+
+</div>
+
+<div>
+
+<h1>10+</h1>
+
+<p>Projects</p>
+
+</div>
+
+<div>
+
+<h1>∞</h1>
+
+<p>Learning</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<section id="skills">
+
+<div class="section-title">
+<h2>My Skills</h2>
+<p>Technologies I'm learning and improving every day.</p>
+</div>
+
+<div class="skills-grid">
+
+<div class="glass skill-card">
+<h3>HTML5</h3>
+<div class="progress"><span style="width:90%"></span></div>
+</div>
+
+<div class="glass skill-card">
+<h3>CSS3</h3>
+<div class="progress"><span style="width:85%"></span></div>
+</div>
+
+<div class="glass skill-card">
+<h3>JavaScript</h3>
+<div class="progress"><span style="width:70%"></span></div>
+</div>
+
+<div class="glass skill-card">
+<h3>Git & GitHub</h3>
+<div class="progress"><span style="width:75%"></span></div>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects">
+
+<div class="section-title">
+<h2>Projects</h2>
+<p>Some of my recent work.</p>
+</div>
+
+<div class="project-grid">
+
+<div class="glass project-card">
+<h3>Portfolio Website</h3>
+<p>Responsive personal portfolio hosted on GitHub Pages.</p>
+</div>
+
+<div class="glass project-card">
+<h3>Cricket Game</h3>
+<p>Browser based cricket game built using HTML, CSS and JavaScript.</p>
+</div>
+
+<div class="glass project-card">
+<h3>Future Projects</h3>
+<p>More exciting projects coming soon...</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact">
+
+<div class="glass contact-card">
+
+<h2>Let's Connect</h2>
+
+<p>
+Interested in working together or just want to say hello?
+</p>
+
+<div class="contact-buttons">
+
+<a href="https://github.com/priyanshtyagi098-dotcom" class="btn">
 GitHub
 </a>
 
-<a href="https://discord.com" class="btn secondary">
+<a href="https://discord.com" class="btn outline">
 Discord
 </a>
 
@@ -296,123 +236,13 @@ Discord
 
 </section>
 
-<section class="section" id="about">
-
-<h2 class="title">About Me</h2>
-
-<div class="about">
-I am Priyansh Tyagi, an 18 year old creator and beginner developer.
-I enjoy building modern websites, experimenting with code,
-creating digital projects and learning new technologies every day.
-My goal is to grow my skills and work professionally online.
-</div>
-
-</section>
-
-<section class="section" id="skills">
-
-<h2 class="title">Skills</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Web Development</h3>
-<p>Learning HTML, CSS and JavaScript for modern responsive websites.</p>
-</div>
-
-<div class="card">
-<h3>GitHub</h3>
-<p>Managing repositories, hosting projects and portfolio websites.</p>
-</div>
-
-<div class="card">
-<h3>Creative Design</h3>
-<p>Creating clean interfaces, modern styles and unique digital ideas.</p>
-</div>
-
-<div class="card">
-<h3>Discord Setup</h3>
-<p>Building and managing organized Discord communities.</p>
-</div>
-
-</div>
-
-</section>
-
-<section class="section" id="projects">
-
-<h2 class="title">Projects</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Portfolio Website</h3>
-<p>Professional responsive portfolio hosted using GitHub Pages.</p>
-</div>
-
-<div class="card">
-<h3>Modern UI Designs</h3>
-<p>Experimenting with futuristic hacker style interfaces.</p>
-</div>
-
-<div class="card">
-<h3>Online Projects</h3>
-<p>Working on creative coding and internet based ideas.</p>
-</div>
-
-</div>
-
-</section>
-
 <footer>
-© 2026 Priyansh Tyagi • All Rights Reserved
+
+<p>© 2026 Priyansh Tyagi. All Rights Reserved.</p>
+
 </footer>
 
-<script>
-
-/* Matrix Effect */
-
-const canvas = document.getElementById("matrix");
-const ctx = canvas.getContext("2d");
-
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-
-const letters = "01";
-const fontSize = 14;
-const columns = canvas.width/fontSize;
-
-const drops = [];
-
-for(let x = 0; x < columns; x++)
-drops[x] = 1;
-
-function draw(){
-
-ctx.fillStyle = "rgba(0,0,0,0.05)";
-ctx.fillRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle = "#00ff88";
-ctx.font = fontSize + "px monospace";
-
-for(let i = 0; i < drops.length; i++){
-
-const text = letters[Math.floor(Math.random()*letters.length)];
-
-ctx.fillText(text,i*fontSize,drops[i]*fontSize);
-
-if(drops[i]*fontSize > canvas.height && Math.random() > 0.975)
-drops[i] = 0;
-
-drops[i]++;
-
-}
-
-}
-
-setInterval(draw,35);
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
