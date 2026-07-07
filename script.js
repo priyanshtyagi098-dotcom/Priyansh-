@@ -1,45 +1,133 @@
-let score = 0;
-let wickets = 0;
+// Loading Screen
+window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
 
-function hitBall(){
+    setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.pointerEvents = "none";
 
-    let run = Math.floor(Math.random()*7);
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 600);
 
-    const result = document.getElementById("result");
-    const scoreText = document.getElementById("score");
+    }, 1200);
+});
 
-    if(run === 0){
+// Typing Effect
+const text = [
+    "Frontend Developer",
+    "UI Designer",
+    "JavaScript Learner",
+    "Freelancer"
+];
 
-        wickets++;
+let index = 0;
+let char = 0;
+let deleting = false;
 
-        result.innerHTML = "OUT! ❌";
+const typing = document.getElementById("typing");
 
-    }else if(run === 4){
+function typeEffect(){
 
-        score += 4;
+    const word = text[index];
 
-        result.innerHTML = "FOUR! 🔥";
-
-    }else if(run === 6){
-
-        score += 6;
-
-        result.innerHTML = "SIX! 🚀";
-
+    if(!deleting){
+        typing.textContent = word.substring(0,char++);
     }else{
-
-        score += run;
-
-        result.innerHTML = run + " Runs";
+        typing.textContent = word.substring(0,char--);
     }
 
-    scoreText.innerHTML =
-    "Score: " + score + "/" + wickets;
+    let speed = deleting ? 60 : 120;
 
-    if(wickets >= 3){
-
-        result.innerHTML =
-        "GAME OVER 🏏 Final Score: " + score;
+    if(!deleting && char > word.length){
+        deleting = true;
+        speed = 1500;
     }
+
+    if(deleting && char < 0){
+        deleting = false;
+        index = (index + 1) % text.length;
+    }
+
+    setTimeout(typeEffect, speed);
+}
+
+typeEffect();
+
+// Floating Particles
+const particles = document.getElementById("particles");
+
+for(let i=0;i<35;i++){
+
+    const p = document.createElement("span");
+
+    const size = Math.random()*8+4;
+
+    p.style.position="absolute";
+    p.style.width=size+"px";
+    p.style.height=size+"px";
+    p.style.borderRadius="50%";
+    p.style.background="rgba(255,255,255,.25)";
+    p.style.left=Math.random()*100+"%";
+    p.style.top=Math.random()*100+"%";
+
+    p.style.animation=`float ${6+Math.random()*8}s linear infinite`;
+
+    particles.appendChild(p);
 
 }
+
+const style=document.createElement("style");
+
+style.innerHTML=`
+@keyframes float{
+
+0%{
+transform:translateY(0px);
+opacity:.2;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-100vh);
+opacity:0;
+}
+
+}
+`;
+
+document.head.appendChild(style);
+
+// Scroll Animation
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+{
+opacity:0,
+transform:"translateY(60px)"
+},
+{
+opacity:1,
+transform:"translateY(0)"
+}
+],{
+duration:900,
+fill:"forwards"
+});
+
+}
+
+});
+
+});
+
+document.querySelectorAll("section").forEach(section=>{
+observer.observe(section);
+});
